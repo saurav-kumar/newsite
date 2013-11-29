@@ -1,0 +1,14 @@
+<h3>Welcome {{User}}! </h3>
+{% if latest_poll_list %}
+    <ul>
+    {% for poll in latest_poll_list %}
+        <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>
+	<!-- This code is calling the link like: "/polls/2" in result calling details() like:
+	detail(request=<HttpRequest object>, poll_id='2')
+	for more detail see details() of views.py
+	-->
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
