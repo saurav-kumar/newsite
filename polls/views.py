@@ -43,3 +43,9 @@ def detail(request, poll_id):
         'User': 'Saurav Kumar'
         })
     '''Give special attention to this function. Get help from index() above'''
+
+def vote(request, choice_id):
+    return 'Hello!'
+
+def results(request, poll_id):
+    return 'Hello!'
