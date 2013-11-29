@@ -1,7 +1,13 @@
 <h3>Welcome {{User}}!</h3>
 <p><h1>{{poll.question}}</h1></p>
-<ul>
+
+{% if error_message %}<p><strong><font color="red">{{ error_message }}</font></strong></p>{% endif %}
+
+<form action="/polls/{{ poll.id }}/vote/" method = "post">
+{% csrf_token %}
 {% for choice in poll.choice_set.all %}
-    <li>{{ choice.choice }}</li>
+	<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+	<label for="choice{{ forloop.counter }}">{{ choice.choice }}</label> <br />
 {% endfor %}
-</ul>
+<input type="submit" value="Vote" />
+</form>
