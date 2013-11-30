@@ -1,4 +1,6 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic import DetailView, ListView
+from polls.models import Poll
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -22,7 +24,6 @@ urlpatterns = patterns('',
 )
 '''
 
-
 urlpatterns = patterns('polls.views', 
     url(r'^$', 'index'),
     url(r'^(?P<poll_id>\d+)/$', 'detail'),
@@ -33,4 +34,3 @@ urlpatterns = patterns('polls.views',
 urlpatterns += patterns('',
     url(r'^admin/', include(admin.site.urls)),
 )
-
