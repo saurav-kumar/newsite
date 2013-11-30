@@ -1,0 +1,33 @@
+<div class="title"><h3><font color="orange">{{ post.title }}</font></h3></div>
+                <ul>
+                    <div class="time"><h5><font color="green">{{ post.created }}</font></h5> 	</div>
+                    <div class="body"><font color="brown">{{ post.body|linebreaks }}</font></div>
+                </ul>
+<hr/>
+
+<!-- Display all comments  -->
+
+{% if comments %}
+    <p><b>Comments:</b></p>
+{% endif %}
+
+{% for comment in comments %}
+    <div class="comment">
+        <div class="time">{{ comment.created }} | {{ comment.author }}</div>
+        <div class="body">{{ comment.body|linebreaks }}</div>
+	<hr/>
+    </div>
+{% endfor %}
+
+<!-- Comment form to post comments -->
+
+<div id="addc"><b>Add a comment</b></div><p></p>
+<!-- Comment form  -->
+<form action="{% url blogs.views.add_comment post.id %}" method="POST">{% csrf_token %}
+    <div id="cform">
+        Name: {{ form.author }}
+        <p>{{ form.body|linebreaks }}</p>
+    </div>
+    <div id="submit"><input type="submit" value="Submit"></div>
+</form>
+<a href = "{% url blogs.views.main %}">(Back to Blog Frontpage)</a>

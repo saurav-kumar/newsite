@@ -5,7 +5,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('blogs.views',
-        url(r'^$','main'),
+        url(r'^$', 'main'),
+        url(r'^(\d+)/$', 'post'),
+        url(r'^add_comment/(\d+)/$', 'add_comment'),
 )
 
 urlpatterns += patterns('',
