@@ -9,6 +9,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -126,6 +128,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'polls',
     'blogs',
+    'django_nose',
+    'django_jenkins',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -156,3 +160,7 @@ LOGGING = {
         },
     }
 }
+
+PROJECT_APPS = [
+    'polls',
+]

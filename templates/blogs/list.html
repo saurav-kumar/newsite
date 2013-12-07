@@ -7,6 +7,7 @@
         <ul>
             {% for post in posts.object_list %}
                 <a href = {% url blogs.views.post post.id %}> <div class="title"><h3><font color="orange">{{ post.title }}</font></h3></div> </a>
+		<!-- Created a link which will call post() with post.id -->
                 <ul>
                     <div class="time"><h5><font color="green">{{ post.created }}</font></h5> 	</div>
                     <div class="body"><font color="brown">{{ post.body|linebreaks }}</font></div>
@@ -17,7 +18,7 @@
 
         <!-- Next/Prev page links  -->
         {% if posts.object_list and posts.paginator.num_pages > 1 %}
-        <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+        <div class="pagination" style="margin-top: 20px; margin-left: -5px; ">
             <span class="step-links">
                 {% if posts.has_previous %}
                     <a href= "?page={{ posts.previous_page_number }}">newer entries &lt;&lt; </a><font color="green">---</font>
